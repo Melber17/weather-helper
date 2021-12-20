@@ -1,12 +1,6 @@
-import React from 'react';
-import {Text, View} from 'react-native';
+import React from "react";
+import { View } from "react-native";
 
-const App = () => {
-  return (
-    <View>
-      <Text>Hello world</Text>
-    </View>
-  );
-};
+const App = () => <View></View>;
 
 export default App;
