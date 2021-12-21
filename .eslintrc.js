@@ -199,6 +199,7 @@ module.exports = {
 					"src/",
 					"App.tsx",
 					"react-native-config.js",
+					"custom.d.ts",
 				],
 			},
 		},
