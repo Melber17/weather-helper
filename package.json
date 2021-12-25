@@ -12,10 +12,15 @@
 		"lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
 	},
 	"dependencies": {
+		"@react-navigation/bottom-tabs": "^6.0.9",
+		"@react-navigation/native": "^6.0.6",
+		"@react-navigation/native-stack": "^6.2.5",
 		"axios": "^0.24.0",
 		"react": "17.0.2",
 		"react-native": "0.66.4",
 		"react-native-reanimated": "^2.3.1",
+		"react-native-safe-area-context": "^3.3.2",
+		"react-native-screens": "^3.10.1",
 		"react-native-svg": "^12.1.1",
 		"react-native-svg-transformer": "^0.14.3",
 		"styled-components": "^5.3.3"
