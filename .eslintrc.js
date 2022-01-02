@@ -131,6 +131,7 @@ module.exports = {
 			],
 			"space-infix-ops": "error", // http://eslint.org/docs/rules/space-infix-ops,
 			"space-in-parens": ["error", "never"],
+			"@typescript-eslint/ban-ts-comment": "off",
 			"no-underscore-dangle": "off", // http://eslint.org/docs/rules/no-underscore-dangle
 			"@typescript-eslint/type-annotation-spacing": "error",
 			"@typescript-eslint/naming-convention": ["error"],

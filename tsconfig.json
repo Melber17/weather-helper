@@ -10,6 +10,7 @@
 		"strict": true
 	},
 	"exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js", ".eslintrc.js"],
-	"include": ["./custom.d.ts", "./src/assets/", "./src/", "App.tsx", "index.ts"],
-	"resolveJsonModule": true
+	"include": ["./custom.d.ts", "./env.d.ts", "./src/assets/", "./src/", "App.tsx", "index.ts"],
+	"resolveJsonModule": true,
+	"typeRoots": ["./types"]
 }
