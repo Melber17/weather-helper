@@ -5,6 +5,7 @@ import styled from "styled-components/native";
 
 import { HomeScreen } from "../../screens/Home/ui";
 import { HomeIcon } from "../../shared/ui";
+import { ExploreIcon } from "../../shared/ui/ExploreIcon/ui";
 
 function SettingsScreen () {
 	return (
@@ -20,6 +21,7 @@ export const TabNavigation = () => (
 
 	<Tab.Navigator initialRouteName="Home" screenOptions={ {
 		tabBarStyle: { backgroundColor: "#0D0B26" },
+		headerShown: false,
 	} }>
 		<Tab.Screen
 			name="Home"
@@ -28,14 +30,24 @@ export const TabNavigation = () => (
 				<HomeIcon focused={ focused }/>
 			),
 			tabBarLabel: ({ focused }) => <Label focused={ focused }>Home</Label>,
+			header: () => null
 			} }
 
 		/>
-		<Tab.Screen name="Settings" component={ SettingsScreen } />
+		<Tab.Screen
+			name="Settings"
+			component={ SettingsScreen }
+			options={ { tabBarIcon: ({ focused }) => (
+				<ExploreIcon focused={ focused }/>
+			),
+			tabBarLabel: ({ focused }) => <Label focused={ focused }>Explore</Label>,
+			header: () => null
+			} } />
 	</Tab.Navigator>
 );
 
 const Label = styled.Text<{focused: boolean}>`
-	font-weight: 400;
-	font-size: 16px;
+	font-weight: 600;
+	font-size: 10px;
+	color: ${({ focused }) => focused ? "#B9C2CD" : "#7E848B"};
 `;

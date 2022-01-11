@@ -4,7 +4,6 @@ import { ThemeProvider } from "styled-components";
 
 import { Routing } from "../screens";
 import { WithNavigationContainer } from "./providers";
-import { GlobalStyle } from "./styles/globals";
 import { theme } from "./styles/theme";
 
 const App: React.FC = () => {
@@ -20,7 +19,6 @@ const App: React.FC = () => {
 				<Routing />
 			</WithNavigationContainer>
 		</ThemeProvider>
-
 	);
 };
 

@@ -1,8 +1,10 @@
-import { createGlobalStyle } from "styled-components";
+import { DefaultTheme } from "@react-navigation/native";
 
-export const GlobalStyle = createGlobalStyle`
-  Text {
-    color: #ffffff;
-    font-family: Roboto;
-  }
-`;
+export const MyTheme = {
+	...DefaultTheme,
+	colors: {
+		...DefaultTheme.colors,
+		background: "#1D1743",
+		border: "1px solid #1D1743"
+	},
+};
