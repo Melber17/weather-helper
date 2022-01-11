@@ -179,7 +179,9 @@ module.exports = {
 	},
 	ignorePatterns: [
 			".eslintrc.js",
-			"**/*.config.js"
+			"**/*.config.js",
+			"/*.config.ts",
+			"react-native-config.js"
 	],
 	settings: {
 			'import/resolver': {
