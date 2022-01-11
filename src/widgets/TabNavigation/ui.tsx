@@ -10,7 +10,7 @@ import { ExploreIcon } from "../../shared/ui/ExploreIcon/ui";
 function SettingsScreen () {
 	return (
 		<View style={ { flex: 1, justifyContent: "center", alignItems: "center" } }>
-			<Text>Settings!</Text>
+			<Text>Explore!</Text>
 		</View>
 	);
 }
