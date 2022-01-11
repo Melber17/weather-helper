@@ -27,7 +27,7 @@ export const TabNavigation = () => (
 			options={ { tabBarIcon: ({ focused }) => (
 				<HomeIcon focused={ focused }/>
 			),
-			tabBarLabel: ({ focused }) => <Label focused={ focused }>Feed</Label>,
+			tabBarLabel: ({ focused }) => <Label focused={ focused }>Home</Label>,
 			} }
 
 		/>
@@ -36,5 +36,6 @@ export const TabNavigation = () => (
 );
 
 const Label = styled.Text<{focused: boolean}>`
-	font-family: sans-serif;
+	font-weight: 400;
+	font-size: 16px;
 `;
