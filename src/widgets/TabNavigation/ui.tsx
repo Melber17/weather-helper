@@ -5,7 +5,7 @@ import styled from "styled-components/native";
 
 import { HomeScreen } from "../../screens/Home/ui";
 import { HomeIcon } from "../../shared/ui";
-import { ExploreIcon } from "../../shared/ui/ExploreIcon/ui";
+import { ExploreIcon } from "../../shared/ui/Icons/ExploreIcon/ui";
 
 function SettingsScreen () {
 	return (

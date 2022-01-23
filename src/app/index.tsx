@@ -3,16 +3,14 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import SplashScreen from "react-native-splash-screen";
 import { ThemeProvider } from "styled-components";
 
-import { CustomStatusBar } from "../processes";
+import { CustomStatusBar } from "../processes/custom-status-bar";
 import { Routing } from "../screens";
 import { WithNavigationContainer } from "./providers";
 import { theme } from "./styles/theme";
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
 	useEffect(() => {
-		setTimeout(() => {
-			SplashScreen.hide();
-		}, 1000);
+		SplashScreen.hide();
 	}, []);
 
 	return (
@@ -27,5 +25,3 @@ const App: React.FC = () => {
 		</ThemeProvider>
 	);
 };
-
-export default App;
