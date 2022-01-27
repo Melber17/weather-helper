@@ -5,6 +5,8 @@ export const MyTheme = {
 	colors: {
 		...DefaultTheme.colors,
 		background: "#1D1743",
-		border: "1px solid #1D1743"
+		border: "1px solid #1D1743",
+		color: "#ffffff",
+		fontFamily: "Roboto"
 	},
 };

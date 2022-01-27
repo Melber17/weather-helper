@@ -3,7 +3,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import SplashScreen from "react-native-splash-screen";
 import { ThemeProvider } from "styled-components";
 
-import { CustomStatusBar } from "../processes/custom-status-bar";
+import { CustomStatusBar } from "../shared/ui/CustomStatusBar";
 import { Routing } from "../screens";
 import { WithNavigationContainer } from "./providers";
 import { theme } from "./styles/theme";
