@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
 import styled from "styled-components/native";
 
-import { TabNavigation } from "../widgets/TabNavigation";
+import { TabNavigation } from "../widgets/tab-navigation";
 
 const Stack = createNativeStackNavigator();
 

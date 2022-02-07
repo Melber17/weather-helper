@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import styled from "styled-components/native";
 
-import { HomeScreen } from "../../screens/Home/ui";
+import { HomeScreen } from "../../screens/home/ui";
 import { HomeIcon } from "../../shared/ui";
 import { ExploreIcon } from "../../shared/ui/Icons/ExploreIcon/ui";
 

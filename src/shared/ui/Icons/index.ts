@@ -1,2 +1,2 @@
-export * from "./ExploreIcon/ui";
-export * from "./HomeIcon/ui";
+export * from "./ExploreIcon";
+export * from "./HomeIcon";
