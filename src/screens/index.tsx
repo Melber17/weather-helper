@@ -5,7 +5,11 @@ import styled from "styled-components/native";
 
 import { TabNavigation } from "../widgets/tab-navigation";
 
-const Stack = createNativeStackNavigator();
+type RootStackListType = {
+	TabNavigation: undefined;
+}
+
+const Stack = createNativeStackNavigator<RootStackListType>();
 
 export const Routing: React.FC = () => (
 	<Container>

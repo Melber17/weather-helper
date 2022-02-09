@@ -8,7 +8,15 @@ import { HomeScreen } from "../../screens/home/ui";
 import { HomeIcon, MapIcon, ExploreIcon, SettingsIcon } from "../../shared/ui";
 import SearchButton from "../../assets/icons/search-button-icon.svg";
 
-const Tab = createBottomTabNavigator();
+type TabStackType = {
+	Home: undefined;
+	Explore: undefined;
+	Search: undefined;
+	Map: undefined;
+	Settings: undefined;
+}
+
+const Tab = createBottomTabNavigator<TabStackType>();
 
 export const TabNavigation = () => {
 	const config = {

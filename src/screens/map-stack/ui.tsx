@@ -1,7 +1,16 @@
-
+import * as React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-const Stack = createStackNavigator();
+import { MapScreen } from "../map";
 
-export const MapStack = () => {
-};
+export type MapStackType = {
+	Map: undefined;
+}
+
+const Stack = createStackNavigator<MapStackType>();
+
+export const MapStack = () => (
+	<Stack.Navigator>
+		<Stack.Screen name="Map" component={ MapScreen }/>
+	</Stack.Navigator>
+);
