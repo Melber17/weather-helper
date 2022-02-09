@@ -2,7 +2,7 @@ import * as React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import styled from "styled-components/native";
-import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
+import Animated, { useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
 
 import { HomeScreen } from "../../screens/home/ui";
 import { HomeIcon, MapIcon, ExploreIcon, SettingsIcon } from "../../shared/ui";
@@ -29,6 +29,10 @@ export const TabNavigation = () => {
 	const animatedStyles = useAnimatedStyle(() => ({
 		transform: [{ translateX: isFocusedSharedValue.value }]
 	}));
+
+	const handlePressSearch = () => {
+
+	};
 
 	return (
 		<>
@@ -67,13 +71,17 @@ export const TabNavigation = () => {
 					component={ SearchScreen }
 					options={ {
 						tabBarIcon: () => (
-							<TouchableOpacity style={ { transform: [{ translateY: -24 }] } }>
+							<TouchableOpacity style={ { alignItems: "center", width: 79, backgroundColor: "transparent" } }>
 								<SearchButton />
 							</TouchableOpacity>
 						),
+
+						tabBarItemStyle: { width: 20, transform: [{ translateY: -24 }], backgroundColor: "transparent" },
 						tabBarLabel: () => null,
 					} }
-
+					listeners={ () => ({
+						tabPress: handlePressSearch
+					}) }
 				/>
 				<Tab.Screen
 					name="Map"
