@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 
 import { CustomStatusBar } from "../shared/ui/CustomStatusBar";
 import { Routing } from "../screens";
-import { WithNavigationContainer } from "./providers";
+import { WithNavigation } from "./providers";
 import { theme } from "./styles/theme";
 
 export const App: React.FC = () => {
@@ -16,11 +16,10 @@ export const App: React.FC = () => {
 	return (
 		<ThemeProvider theme={ theme }>
 			<SafeAreaProvider>
-
 				<CustomStatusBar backgroundColor="#1D1743" />
-				<WithNavigationContainer>
+				<WithNavigation>
 					<Routing />
-				</WithNavigationContainer>
+				</WithNavigation>
 			</SafeAreaProvider>
 		</ThemeProvider>
 	);
