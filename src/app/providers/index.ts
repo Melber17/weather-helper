@@ -1,1 +1,1 @@
-export * from "./with-navigation-container";
+export * from "./with-navigation";

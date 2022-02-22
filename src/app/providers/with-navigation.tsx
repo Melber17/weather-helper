@@ -7,7 +7,7 @@ interface IProps {
 	children: React.ReactNode
 }
 
-export const WithNavigationContainer: React.FC<IProps> = ({ children }) => (
+export const WithNavigation: React.FC<IProps> = ({ children }) => (
 	<NavigationContainer theme={ MyTheme }>
 		{children}
 	</NavigationContainer>
