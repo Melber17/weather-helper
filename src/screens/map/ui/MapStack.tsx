@@ -1,10 +1,10 @@
 import * as React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { MapScreen } from "..";
+import { MapScreen } from "./MapScreen";
 
 export type MapStackType = {
-	Map: undefined;
+	MapScreen: undefined;
 }
 
 const Stack = createStackNavigator<MapStackType>();
@@ -13,6 +13,6 @@ export const MapStack = () => (
 	<Stack.Navigator screenOptions={ {
 		headerShown: false
 	} }>
-		<Stack.Screen name="Map" component={ MapScreen }/>
+		<Stack.Screen name="MapScreen" component={ MapScreen }/>
 	</Stack.Navigator>
 );

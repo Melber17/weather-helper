@@ -5,7 +5,7 @@ import { Text, View } from "react-native";
 import { MapStackType } from "./MapStack";
 
 export interface IProps {
-	navigation: StackNavigationProp<MapStackType, "Map">
+	navigation: StackNavigationProp<MapStackType, "MapScreen">
 }
 
 export const MapScreen = (props: IProps) => (
