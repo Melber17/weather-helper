@@ -1,12 +1,15 @@
 import * as React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View, Platform } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import styled from "styled-components/native";
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { HomeScreen } from "../../screens/home/ui";
+import { HomeStack } from "../../screens/home";
 import { HomeIcon, MapIcon, ExploreIcon, SettingsIcon } from "../../shared/ui";
-import SearchButton from "../../assets/icons/search-button-icon.svg";
+import SearchButton from "../../shared/assets/icons/search-button-icon.svg";
+import { getWidth } from "./lib";
+import { MapStack } from "../../screens/map";
 
 type TabStackType = {
 	Home: undefined;
@@ -19,6 +22,7 @@ type TabStackType = {
 const Tab = createBottomTabNavigator<TabStackType>();
 
 export const TabNavigation = () => {
+
 	const config = {
 		damping: 25,
 		mass: 1,
@@ -27,11 +31,12 @@ export const TabNavigation = () => {
 		restSpeedThreshold: 0.001,
 		restDisplacementThreshold: 0.001,
 	};
-	const LINE_WIDTH = 78;
-	const isFocusedSharedValue = useSharedValue(0);
+	const insets = useSafeAreaInsets();
+
+	const isFocusedSharedValue = useSharedValue(20);
 
 	const handleTabListener = (index: number) => {
-		isFocusedSharedValue.value = withSpring(LINE_WIDTH * index, config);
+		isFocusedSharedValue.value = withSpring((getWidth() * index) + 20, config);
 	};
 
 	const animatedStyles = useAnimatedStyle(() => ({
@@ -50,11 +55,10 @@ export const TabNavigation = () => {
 					tabBarStyle: { backgroundColor: "#0D0B26" },
 					headerShown: false,
 				} }
-
 			>
 				<Tab.Screen
 					name="Home"
-					component={ HomeScreen }
+					component={ HomeStack }
 					options={ {
 						tabBarIcon: ({ focused }) => <HomeIcon focused={ focused } />,
 						tabBarLabel: ({ focused }) => <Label focused={ focused }>Home</Label>,
@@ -93,7 +97,7 @@ export const TabNavigation = () => {
 				/>
 				<Tab.Screen
 					name="Map"
-					component={ MapScreen }
+					component={ MapStack }
 					options={ {
 						tabBarIcon: ({ focused }) => <MapIcon focused={ focused } />,
 						tabBarLabel: ({ focused }) => <Label focused={ focused }>Map</Label>,
@@ -114,7 +118,7 @@ export const TabNavigation = () => {
 					}) }
 				/>
 			</Tab.Navigator>
-			<Line style={ animatedStyles } />
+			<Line style={ animatedStyles } width={ getWidth() } bottomInset={ insets.bottom } isAndroid={ Platform.OS === "android" } />
 		</>
 	);
 };
@@ -150,14 +154,13 @@ function SearchScreen () {
 	);
 }
 
-const Line = styled(Animated.View)`
-	width: 32px;
+const Line = styled(Animated.View)<{width: number, isAndroid: boolean, bottomInset: number}>`
+	width: ${({ width }) => width - 42}px;
 	height: 2px;
 	background-color: #1DAEFF;
 	border-radius: 28px;
 	position: absolute;
-	bottom: 50px;
-	left: 24px;
+	bottom: ${({ isAndroid, bottomInset }) => isAndroid ? 50 : 50 + bottomInset}px;
 `;
 
 const Label = styled.Text<{ focused: boolean }>`

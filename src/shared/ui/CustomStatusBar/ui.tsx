@@ -1,21 +1,42 @@
 import * as React from "react";
-import { View, StatusBar, StatusBarStyle } from "react-native";
+import { StatusBar, StatusBarStyle, Platform, View } from "react-native";
+import Animated from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { PlatformType } from "../../lib";
+
 interface IProps {
-	backgroundColor: string;
-	barStyle?: StatusBarStyle
+	backgroundColor?: string;
+	barStyle?: StatusBarStyle;
+	translucent?: boolean;
 }
 
-export const CustomStatusBar: React.FC<IProps> = ({ backgroundColor, barStyle = "light-content" }) => {
+export const CustomStatusBar: React.FC<IProps> = ({ backgroundColor, barStyle = "dark-content", translucent }) => {
 
 	const insets = useSafeAreaInsets();
+	const backgroundColorStyle = {
+		backgroundColor: backgroundColor ?? "#ffffff"
+	};
 
-	return (
-		<View style={ { height: insets.top, backgroundColor } }>
+	function renderStatusBar (): React.ReactElement {
+		if (Platform.OS === PlatformType.IOS) {
+			return (
+				<View style={ [{ height: insets.top }, backgroundColorStyle] }>
+					<StatusBar
+						backgroundColor={ backgroundColor }
+						barStyle={ barStyle } />
+				</View>
+			);
+		}
+
+		return (
 			<StatusBar
 				backgroundColor={ backgroundColor }
-				barStyle={ barStyle } />
-		</View>
+				barStyle={ barStyle } translucent={ translucent } />
+		);
+	}
+
+	return (
+		<>{renderStatusBar()}</>
 	);
 };
