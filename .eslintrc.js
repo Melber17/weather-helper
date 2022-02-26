@@ -82,6 +82,7 @@ module.exports = {
 							"after": true
 					}
 			],
+			"arrow-body-style": "off",
 			"comma-style": [
 					"error",
 					"last"

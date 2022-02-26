@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 
 import { Routing } from "../screens";
 import { WithNavigation } from "./providers";
+import { WithRedux } from "./providers/with-redux";
 import { theme } from "./styles/theme";
 
 export const App: React.FC = () => {
@@ -13,12 +14,14 @@ export const App: React.FC = () => {
 	}, []);
 
 	return (
-		<ThemeProvider theme={ theme }>
-			<SafeAreaProvider>
-				<WithNavigation>
-					<Routing />
-				</WithNavigation>
-			</SafeAreaProvider>
-		</ThemeProvider>
+		<WithRedux>
+			<ThemeProvider theme={ theme }>
+				<SafeAreaProvider>
+					<WithNavigation>
+						<Routing />
+					</WithNavigation>
+				</SafeAreaProvider>
+			</ThemeProvider>
+		</WithRedux>
 	);
 };
