@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import reduxFlipper from "redux-flipper";
 
+import { weatherSlice } from "../../entities/weather";
+
 const middlewares = [];
 
 if (__DEV__) {
@@ -9,6 +11,7 @@ if (__DEV__) {
 
 export const store = configureStore({
 	reducer: {
+		weather: weatherSlice.reducer
 	},
 	middleware: middlewares
 });
