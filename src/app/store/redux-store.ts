@@ -2,18 +2,20 @@ import { configureStore } from "@reduxjs/toolkit";
 import reduxFlipper from "redux-flipper";
 
 import { weatherSlice } from "../../entities/weather";
-
-const middlewares = [];
-
-if (__DEV__) {
-	middlewares.push(reduxFlipper());
-}
+import { currentForecastSlice } from "../../widgets/current-forecast";
 
 export const store = configureStore({
 	reducer: {
-		weather: weatherSlice.reducer
+		weather: weatherSlice.reducer,
+		currentForecast: currentForecastSlice.reducer
 	},
-	middleware: middlewares
+	middleware: (getDefaultMiddleware) => {
+		if (__DEV__) {
+			return getDefaultMiddleware().concat(reduxFlipper());
+		}
+
+		return getDefaultMiddleware();
+	},
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -32,5 +32,5 @@ const Wrapper = styled.Text<TextProps>`
   font-family: ${({ font = Fonts.ROBOTO, fontStyle = FontStyles.REGULAR }) =>
 		`${font}-${fontStyle}`};
   font-size: ${({ size = 14 }) => moderateScale(size)}px;
-	color: ${({ color = "#03061D" }) => color};
+	color: ${({ color = "#ffffff" }) => color};
 `;
