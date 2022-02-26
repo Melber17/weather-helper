@@ -15,6 +15,7 @@ export interface ICurrentForecast {
 		};
 		wind_kph: number;
 		humidity: number;
+		precip_mm: number;
 	}
 }
 

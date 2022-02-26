@@ -20,9 +20,3 @@ export const HomeScreen: React.FC = () => {
 		</View>
 	);
 };
-
-const Text = styled.Text`
-	font-size: 18px;
-	color: #fff;
-	font-family: Roboto-Medium;
-	`;

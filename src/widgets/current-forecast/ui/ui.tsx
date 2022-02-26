@@ -4,8 +4,11 @@ import styled from "styled-components/native";
 
 import { FontStyles } from "../../../shared/config";
 import { useAppSelector } from "../../../shared/lib";
-import { Text } from "../../../shared/ui";
+import { Badge, Text } from "../../../shared/ui";
 import { formatterDate, formatterUrlIcon } from "../lib";
+import RainIcon from "../../../shared/assets/icons/rainIcon.svg";
+import WindIcon from "../../../shared/assets/icons/windIcon.svg";
+import HumidityIcon from "../../../shared/assets/icons/humidityIcon.svg";
 
 export const CurrentForecast: React.FC = () => {
 	const forecast = useAppSelector(store => store.currentForecast);
@@ -54,6 +57,26 @@ export const CurrentForecast: React.FC = () => {
 					uri: formatterUrlIcon(forecast.forecastData.current.condition.icon),
 				} }
 			/>
+			<Wrapper>
+				<Badge
+					color="#658ED9"
+					backgroundColor="rgba(101, 142, 217, 0.1)"
+					icon={ <RainIcon /> }>
+					{forecast.forecastData.current.humidity}%
+				</Badge>
+				<Badge
+					color="#D86191"
+					backgroundColor="rgba(216, 97, 145, 0.1)"
+					icon={ <HumidityIcon /> }>
+					{forecast.forecastData.current.precip_mm} mm
+				</Badge>
+				<Badge
+					color="#5E4FC1"
+					backgroundColor="rgba(101, 142, 217, 0.1)"
+					icon={ <WindIcon /> }>
+					{forecast.forecastData.current.wind_kph} km/h
+				</Badge>
+			</Wrapper>
 
 		</Container>
 	);
@@ -97,4 +120,10 @@ const ForecastIcon = styled.Image`
   height: ${moderateScale(164)}px;
   resize-mode: contain;
   margin-top: 16px;
+`;
+
+const Wrapper = styled.View`
+	width: 100%;
+	flex-direction: row;
+	justify-content: space-between;
 `;
