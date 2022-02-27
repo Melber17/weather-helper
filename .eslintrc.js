@@ -181,8 +181,10 @@ module.exports = {
 	ignorePatterns: [
 			".eslintrc.js",
 			"**/*.config.js",
+			"*/*.config.js",
 			"/*.config.ts",
-			"react-native-config.js"
+			"react-native-config.js",
+			"jest.setup.js"
 	],
 	settings: {
 			'import/resolver': {
