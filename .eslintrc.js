@@ -96,6 +96,7 @@ module.exports = {
 			"no-multiple-empty-lines": ["error", {
 					"max": 1
 			}],
+			"import/no-extraneous-dependencies": "off",
 			"no-mixed-spaces-and-tabs": "error", // http://eslint.org/docs/rules/no-mixed-spaces-and-tabs
 			"no-multi-spaces": "error",
 			"no-nested-ternary": "error", // http://eslint.org/docs/rules/no-nested-ternary
