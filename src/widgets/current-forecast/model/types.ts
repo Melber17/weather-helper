@@ -3,7 +3,7 @@ export interface ICurrentForecast {
 		name: string;
 		region: string;
 		country: string;
-		localtime: Date;
+		localtime: string;
 		lat: number;
 		lon: number;
 	};

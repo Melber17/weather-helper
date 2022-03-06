@@ -11,9 +11,9 @@ import WindIcon from "../../../shared/assets/icons/windIcon.svg";
 import HumidityIcon from "../../../shared/assets/icons/humidityIcon.svg";
 
 export const CurrentForecast: React.FC = () => {
-	const forecast = useAppSelector(store => store.currentForecast);
+	const forecast = useAppSelector(store => store.currentForecast.forecastData);
 
-	if (!forecast.forecastData) {
+	if (!forecast) {
 		return (
 			<Container>
 				<Text>Loading...</Text>
@@ -27,18 +27,18 @@ export const CurrentForecast: React.FC = () => {
 				size={ 24 }
 				fontStyle={ FontStyles.BOLD }
 			>
-				{forecast.forecastData?.location.name}
+				{forecast?.location.name}
 			</CityTitle>
 			<SubText
 				size={ 12 }
 				fontStyle={ FontStyles.BOLD }
 			>
-				{forecast.forecastData?.location.country}
+				{forecast?.location.country}
 			</SubText>
 			<DegreesWrapper 	>
 				<DegreesText size={ 64 }
 					fontStyle={ FontStyles.BOLD }>
-					{forecast.forecastData.current.temp_c}
+					{forecast.current.temp_c}
 				</DegreesText>
 				<DegreesUnit size={ 14 }
 					fontStyle={ FontStyles.MEDIUM }>
@@ -49,12 +49,12 @@ export const CurrentForecast: React.FC = () => {
 				fontStyle={ FontStyles.MEDIUM }
 				color="rgba(255, 255, 255, 0.5)"
 				size={ 14 }>
-				{formatterDate()}
+				{formatterDate(forecast.location.localtime)}
 			</Text>
 
 			<ForecastIcon
 				source={ {
-					uri: formatterUrlIcon(forecast.forecastData.current.condition.icon),
+					uri: formatterUrlIcon(forecast.current.condition.icon),
 				} }
 			/>
 			<Wrapper>
@@ -62,19 +62,19 @@ export const CurrentForecast: React.FC = () => {
 					color="#658ED9"
 					backgroundColor="rgba(101, 142, 217, 0.1)"
 					icon={ <RainIcon /> }>
-					{forecast.forecastData.current.humidity}%
+					{forecast.current.humidity}%
 				</Badge>
 				<Badge
 					color="#D86191"
 					backgroundColor="rgba(216, 97, 145, 0.1)"
 					icon={ <HumidityIcon /> }>
-					{forecast.forecastData.current.precip_mm} mm
+					{forecast.current.precip_mm} mm
 				</Badge>
 				<Badge
 					color="#5E4FC1"
 					backgroundColor="rgba(101, 142, 217, 0.1)"
 					icon={ <WindIcon /> }>
-					{forecast.forecastData.current.wind_kph} km/h
+					{forecast.current.wind_kph} km/h
 				</Badge>
 			</Wrapper>
 
