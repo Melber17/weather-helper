@@ -22,3 +22,18 @@ export interface ICurrentForecast {
 export interface IGetCurrentForecastPayload {
 	city: string;
 }
+
+export type IGetTodaysForecastPayload = IGetCurrentForecastPayload
+
+export interface IHourForecast {
+	time_epoch: number;
+	time: string;
+	temp_c: number;
+	condition: {
+		icon: string;
+	}
+}
+
+export interface ITodaysForecast {
+	hour: IHourForecast[]
+}
