@@ -3,23 +3,18 @@ import { moderateScale, moderateVerticalScale, verticalScale } from "react-nativ
 import styled from "styled-components/native";
 
 import { FontStyles } from "../../../shared/config";
-import { useAppSelector } from "../../../shared/lib";
 import { Badge, Text } from "../../../shared/ui";
 import { formatterDate, formatterUrlIcon } from "../lib";
 import RainIcon from "../../../shared/assets/icons/rainIcon.svg";
 import WindIcon from "../../../shared/assets/icons/windIcon.svg";
 import HumidityIcon from "../../../shared/assets/icons/humidityIcon.svg";
+import { ICurrentForecast } from "../../../entities/weather-forecast";
 
-export const CurrentForecast: React.FC = () => {
-	const forecast = useAppSelector(store => store.currentForecast.forecastData);
+interface IProps {
+	forecastData: ICurrentForecast
+}
 
-	if (!forecast) {
-		return (
-			<Container>
-				<Text>Loading...</Text>
-			</Container>
-		);
-	}
+export const CurrentForecast: React.FC<IProps> = ({ forecastData }) => {
 
 	return (
 		<Container>
@@ -27,18 +22,18 @@ export const CurrentForecast: React.FC = () => {
 				size={ 24 }
 				fontStyle={ FontStyles.BOLD }
 			>
-				{forecast?.location.name}
+				{forecastData.location.name}
 			</CityTitle>
 			<SubText
 				size={ 12 }
 				fontStyle={ FontStyles.BOLD }
 			>
-				{forecast?.location.country}
+				{forecastData?.location.country}
 			</SubText>
 			<DegreesWrapper 	>
 				<DegreesText size={ 64 }
 					fontStyle={ FontStyles.BOLD }>
-					{forecast.current.temp_c}
+					{forecastData?.current.temp_c}
 				</DegreesText>
 				<DegreesUnit size={ 14 }
 					fontStyle={ FontStyles.MEDIUM }>
@@ -49,12 +44,12 @@ export const CurrentForecast: React.FC = () => {
 				fontStyle={ FontStyles.MEDIUM }
 				color="rgba(255, 255, 255, 0.5)"
 				size={ 14 }>
-				{formatterDate(forecast.location.localtime)}
+				{formatterDate(forecastData.location.localtime)}
 			</Text>
 
 			<ForecastIcon
 				source={ {
-					uri: formatterUrlIcon(forecast.current.condition.icon),
+					uri: formatterUrlIcon(forecastData.current.condition.icon),
 				} }
 			/>
 			<Wrapper>
@@ -62,28 +57,27 @@ export const CurrentForecast: React.FC = () => {
 					color="#658ED9"
 					backgroundColor="rgba(101, 142, 217, 0.1)"
 					icon={ <RainIcon /> }>
-					{forecast.current.humidity}%
+					{forecastData.current.humidity}%
 				</Badge>
 				<Badge
 					color="#D86191"
 					backgroundColor="rgba(216, 97, 145, 0.1)"
 					icon={ <HumidityIcon /> }>
-					{forecast.current.precip_mm} mm
+					{forecastData.current.precip_mm} mm
 				</Badge>
 				<Badge
 					color="#5E4FC1"
 					backgroundColor="rgba(101, 142, 217, 0.1)"
 					icon={ <WindIcon /> }>
-					{forecast.current.wind_kph} km/h
+					{forecastData.current.wind_kph} km/h
 				</Badge>
 			</Wrapper>
-
 		</Container>
 	);
 };
 
 const Container = styled.View`
-  margin: 8px 16px 0 16px;
+  margin-top: 8px;
   align-items: center;
 `;
 

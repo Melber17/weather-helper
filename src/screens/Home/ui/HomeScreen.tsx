@@ -1,22 +1,44 @@
-import React, { useEffect } from "react";
-import { View } from "react-native";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
 
+import { ICurrentForecast, ForecastAPI } from "../../../entities/weather-forecast";
 import { useAppDispatch } from "../../../shared/lib";
-import { CustomStatusBar } from "../../../shared/ui";
-import { CurrentForecast, getCurrentForecast } from "../../../widgets/current-forecast";
+import { CustomStatusBar, Text } from "../../../shared/ui";
+import { CurrentForecast } from "../../../widgets/current-forecast";
+import { TodaysForecast } from "../../../widgets/todays-forecast";
 
 export const HomeScreen: React.FC = () => {
-	const dispatch = useAppDispatch();
+	const [forecastData, setForecastData] = useState<ICurrentForecast>();
+
+	const fetchForecastData = async () => {
+		const response = await ForecastAPI.getForecast({ city: "New York" });
+
+		setForecastData(response);
+	};
 
 	useEffect(() => {
-		dispatch(getCurrentForecast({ city: "New York" }));
+		fetchForecastData();
 	}, []);
 
+	if (!forecastData) {
+		return (
+			<Container>
+				<Text>Loading...</Text>
+			</Container>
+		);
+	}
+
 	return (
-		<View style={ { flex: 1 } }>
+		<Container>
 			<CustomStatusBar />
-			<CurrentForecast />
-		</View>
+
+			<CurrentForecast forecastData={ forecastData }/>
+			<TodaysForecast />
+		</Container>
 	);
 };
+
+const Container = styled.View`
+	flex: 1;
+	margin: 0 16px;
+`;

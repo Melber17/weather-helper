@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const currentForecastSlice = createSlice({
-	name: "forecast/current/slice",
+	name: "weather/forecast/slice",
 	initialState,
 	reducers: {
 		setIsLoading: (state, action: PayloadAction<boolean>) => {

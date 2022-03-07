@@ -1,12 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import reduxFlipper from "redux-flipper";
 
-import { weatherSlice } from "../../entities/weather";
-import { currentForecastSlice } from "../../widgets/current-forecast";
+import { currentForecastSlice } from "../../entities/weather-forecast";
 
 export const store = configureStore({
 	reducer: {
-		weather: weatherSlice.reducer,
 		currentForecast: currentForecastSlice.reducer
 	},
 	middleware: (getDefaultMiddleware) => {

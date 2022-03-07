@@ -18,7 +18,7 @@ interface IProps extends AdditionalTextProps {
 interface TextProps {
 	size?: number;
 	color?: string;
-	fontStyle?: string;
+	fontStyle?: FontStyles;
 	font?: string;
 }
 

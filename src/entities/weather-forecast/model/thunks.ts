@@ -5,7 +5,7 @@ import { setForecastData, setIsLoading } from "./slice";
 import { IGetCurrentForecastPayload } from "./types";
 
 export const getCurrentForecast = createAsyncThunk(
-	"forecast/current/getCurrentForecast",
+	"weather/forecast",
 	async (payload: IGetCurrentForecastPayload, { dispatch }) => {
 		try {
 			dispatch(setIsLoading(true));
