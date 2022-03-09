@@ -3,7 +3,7 @@ import { scale, verticalScale } from "react-native-size-matters";
 import styled from "styled-components/native";
 
 import { Text } from "../../../shared/ui";
-import { formatterDate, formatterHours, formatterUrlIcon } from "../../current-forecast";
+import { formatterHours, formatterUrlIcon } from "../../current-forecast";
 
 interface IProps {
 	temperature: number;

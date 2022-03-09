@@ -1,8 +1,8 @@
 import React from "react";
-import { FlatList, ScrollView } from "react-native";
+import { FlatList } from "react-native";
 import styled from "styled-components/native";
 
-import { ICurrentForecast, IHourForecast } from "../../../entities/weather-forecast";
+import { IHourForecast } from "../../../entities/weather-forecast";
 import { FontStyles } from "../../../shared/config";
 import { Text } from "../../../shared/ui";
 import { TodaysForecastCard } from "./TodaysForecastCard";
