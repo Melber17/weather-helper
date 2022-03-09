@@ -20,16 +20,18 @@ export const TodaysForecast: React.FC<IProps> = ({ todaysForecastData }) => {
 			<Title fontStyle={ FontStyles.BOLD } size={ 24 }>Today</Title>
 			<FlatList
 				data={ todaysForecastData }
-				renderItem={ ({ item }) => (
+				renderItem={ ({ item, index }) => (
 					<TodaysForecastCard
 						icon={ item.condition.icon }
 						temperature={ item.temp_c }
 						time={ item.time }
+						index={ index }
 					/>
 				) }
 				bounces={ false }
 				keyExtractor={ keyExtractor }
 				horizontal={ true }
+				showsHorizontalScrollIndicator={ false }
 			/>
 		</Container>
 	);

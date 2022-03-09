@@ -1,6 +1,7 @@
 import React from "react";
 import { moderateScale, moderateVerticalScale, verticalScale } from "react-native-size-matters";
 import styled from "styled-components/native";
+import FastImage from "react-native-fast-image";
 
 import { FontStyles } from "../../../shared/config";
 import { Badge, Text } from "../../../shared/ui";
@@ -109,7 +110,7 @@ const DegreesUnit = styled(Text)`
   transform: translateY(${moderateVerticalScale(7)}px);
 `;
 
-const ForecastIcon = styled.Image`
+const ForecastIcon = styled(FastImage)`
   width:${moderateScale(164)}px;
   height: ${moderateScale(164)}px;
   resize-mode: contain;

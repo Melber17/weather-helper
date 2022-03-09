@@ -33,7 +33,7 @@ export const CustomStatusBar: React.FC<IProps> = ({ backgroundColor, barStyle = 
 
 		return (
 			<StatusBar
-				backgroundColor={ backgroundColor }
+				backgroundColor={ backgroundColorStyle }
 				barStyle={ barStyle } translucent={ translucent } />
 		);
 	}

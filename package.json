@@ -28,6 +28,7 @@
 		"patch-package": "^6.4.7",
 		"react": "17.0.2",
 		"react-native": "0.66.4",
+		"react-native-fast-image": "^8.5.11",
 		"react-native-flipper": "^0.136.0",
 		"react-native-gesture-handler": "2.1.1",
 		"react-native-reanimated": "^2.4.1",
@@ -49,7 +50,6 @@
 		"@testing-library/jest-dom": "^5.16.2",
 		"@testing-library/jest-native": "^4.0.4",
 		"@testing-library/react-native": "^9.0.0",
-
 		"@types/jest": "^26.0.23",
 		"@types/react-native": "^0.66.4",
 		"@types/react-redux": "^7.1.22",

@@ -1,4 +1,6 @@
 import React from "react";
+import FastImage from "react-native-fast-image";
+import Animated, { FadeIn } from "react-native-reanimated";
 import { scale, verticalScale } from "react-native-size-matters";
 import styled from "styled-components/native";
 
@@ -9,29 +11,31 @@ interface IProps {
 	temperature: number;
 	icon: string;
 	time: string;
+	index: number
 }
 
 export const TodaysForecastCard: React.FC<IProps> = (props) => {
-	const { temperature, icon, time } = props;
+	const { temperature, icon, time, index } = props;
 
 	return (
-		<Wrapper>
+		<Wrapper entering={ FadeIn.delay(100 * index) }>
 			<TemperatureText size={ 18 }>{temperature}°C</TemperatureText>
-			<WeatherIcon source={ { uri: formatterUrlIcon(icon) } }/>
+			<WeatherIcon source={ { uri: formatterUrlIcon(icon), priority: FastImage.priority.high } }/>
 			<TimeText size={ 18 }>{formatterHours(time)}</TimeText>
 		</Wrapper>
 	);
 };
 
-const Wrapper = styled.View`
+const Wrapper = styled(Animated.View)`
 	width: ${scale(70)}px;
 	align-items: center;
 	margin-right: 16px;
 `;
 
-const WeatherIcon = styled.Image`
+const WeatherIcon = styled(FastImage)`
 	width: 100%;
-	height: ${verticalScale(44)}px;
+	height: ${verticalScale(66)}px;
+	resize-mode: contain;
 `;
 
 const TemperatureText = styled(Text)`
@@ -39,5 +43,5 @@ const TemperatureText = styled(Text)`
 `;
 
 const TimeText = styled(Text)`
-	margin-top: ${verticalScale(24)}px;
+	margin-top: ${verticalScale(6)}px;
 `;
