@@ -16,6 +16,7 @@
 		"postinstall": "patch-package"
 	},
 	"dependencies": {
+		"@react-native-firebase/app": "^14.5.1",
 		"@react-navigation/bottom-tabs": "^6.0.9",
 		"@react-navigation/native": "^6.0.6",
 		"@react-navigation/native-stack": "^6.2.5",
@@ -31,6 +32,7 @@
 		"react-native-fast-image": "^8.5.11",
 		"react-native-flipper": "^0.136.0",
 		"react-native-gesture-handler": "2.1.1",
+		"react-native-push-notification": "^8.1.1",
 		"react-native-reanimated": "^2.4.1",
 		"react-native-safe-area-context": "^3.3.2",
 		"react-native-screens": "^3.10.1",
@@ -52,6 +54,7 @@
 		"@testing-library/react-native": "^9.0.0",
 		"@types/jest": "^26.0.23",
 		"@types/react-native": "^0.66.4",
+		"@types/react-native-push-notification": "^8.1.0",
 		"@types/react-redux": "^7.1.22",
 		"@types/react-test-renderer": "^17.0.1",
 		"@types/styled-components": "^5.1.18",
