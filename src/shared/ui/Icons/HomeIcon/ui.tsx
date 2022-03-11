@@ -1,4 +1,5 @@
 import * as React from "react";
+import { scale } from "react-native-size-matters";
 import Svg, { Path } from "react-native-svg";
 
 interface IProps {
@@ -10,9 +11,9 @@ export const HomeIcon: React.FC<IProps> = (props) => {
 
 	return (
 		<Svg
-			width={ 24 }
-			height={ 24 }
-			viewBox="0 0 24 24"
+			width={ scale(24) }
+			height={ scale(24) }
+			viewBox={ `0 0 24 24` }
 			fill="none"
 		>
 			<Path

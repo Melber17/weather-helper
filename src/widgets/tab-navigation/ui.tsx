@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import styled from "styled-components/native";
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { verticalScale } from "react-native-size-matters";
 
 import { HomeStack } from "../../screens/home";
 import { HomeIcon, MapIcon, ExploreIcon, SettingsIcon } from "../../shared/ui";
@@ -52,7 +53,7 @@ export const TabNavigation = () => {
 			<Tab.Navigator
 				initialRouteName="Home"
 				screenOptions={ {
-					tabBarStyle: { backgroundColor: "#0D0B26" },
+					tabBarStyle: { backgroundColor: "#0D0B26", height: verticalScale(56) },
 					headerShown: false,
 				} }
 			>

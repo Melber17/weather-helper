@@ -20,7 +20,7 @@ export const TodaysForecastCard: React.FC<IProps> = (props) => {
 	return (
 		<Wrapper entering={ FadeIn.delay(100 * index) }>
 			<TemperatureText size={ 18 }>{temperature}°C</TemperatureText>
-			<WeatherIcon source={ { uri: formatterUrlIcon(icon), priority: FastImage.priority.high } }/>
+			<WeatherIcon source={ { uri: formatterUrlIcon(icon), priority: FastImage.priority.high } } resizeMode="contain"/>
 			<TimeText size={ 18 }>{formatterHours(time)}</TimeText>
 		</Wrapper>
 	);
@@ -34,8 +34,7 @@ const Wrapper = styled(Animated.View)`
 
 const WeatherIcon = styled(FastImage)`
 	width: 100%;
-	height: ${verticalScale(66)}px;
-	resize-mode: contain;
+	min-height: ${verticalScale(70)}px;
 `;
 
 const TemperatureText = styled(Text)`

@@ -83,11 +83,10 @@ const Container = styled.View`
 `;
 
 const CityTitle = styled(Text)`
-  line-height: 28px;
+  line-height: ${verticalScale(28)}px;
 `;
 
 const SubText = styled(Text)`
-  line-height: 14px;
   color: rgba(255, 255, 255, 0.7);
   margin-top: ${verticalScale(8)}px;
 `;
@@ -106,7 +105,7 @@ const DegreesText = styled(Text)`
 `;
 
 const DegreesUnit = styled(Text)`
-  line-height: 17px;
+  line-height: ${verticalScale(17)}px;
   transform: translateY(${moderateVerticalScale(7)}px);
 `;
 
