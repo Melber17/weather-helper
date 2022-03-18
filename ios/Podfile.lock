@@ -12,6 +12,9 @@ PODS:
     - ReactCommon/turbomodule/core (= 0.66.4)
   - Firebase/CoreOnly (8.12.1):
     - FirebaseCore (= 8.12.1)
+  - Firebase/Messaging (8.12.1):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 8.12.0)
   - FirebaseCore (8.12.1):
     - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.7)
@@ -20,6 +23,20 @@ PODS:
     - GoogleDataTransport (~> 9.1)
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
+    - nanopb (~> 2.30908.0)
+  - FirebaseInstallations (8.13.0):
+    - FirebaseCore (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.7)
+    - GoogleUtilities/UserDefaults (~> 7.7)
+    - PromisesObjC (< 3.0, >= 1.2)
+  - FirebaseMessaging (8.12.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleDataTransport (~> 9.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/Environment (~> 7.7)
+    - GoogleUtilities/Reachability (~> 7.7)
+    - GoogleUtilities/UserDefaults (~> 7.7)
     - nanopb (~> 2.30908.0)
   - Flipper (0.99.0):
     - Flipper-Folly (~> 2.6)
@@ -87,10 +104,23 @@ PODS:
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleUtilities/AppDelegateSwizzler (7.7.0):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
   - GoogleUtilities/Environment (7.7.0):
     - PromisesObjC (< 3.0, >= 1.2)
   - GoogleUtilities/Logger (7.7.0):
     - GoogleUtilities/Environment
+  - GoogleUtilities/Network (7.7.0):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (7.7.0)"
+  - GoogleUtilities/Reachability (7.7.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (7.7.0):
+    - GoogleUtilities/Logger
   - libevent (2.1.12)
   - libwebp (1.2.1):
     - libwebp/demux (= 1.2.1)
@@ -386,6 +416,10 @@ PODS:
   - RNFBApp (14.5.1):
     - Firebase/CoreOnly (= 8.12.1)
     - React-Core
+  - RNFBMessaging (14.5.1):
+    - Firebase/Messaging (= 8.12.1)
+    - React-Core
+    - RNFBApp
   - RNGestureHandler (2.1.1):
     - React-Core
   - RNReanimated (2.4.1):
@@ -490,6 +524,7 @@ DEPENDENCIES:
   - "RNCPushNotificationIOS (from `../node_modules/@react-native-community/push-notification-ios`)"
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
+  - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -502,6 +537,8 @@ SPEC REPOS:
     - Firebase
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseInstallations
+    - FirebaseMessaging
     - Flipper
     - Flipper-Boost-iOSX
     - Flipper-DoubleConversion
@@ -594,6 +631,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-fast-image"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
+  RNFBMessaging:
+    :path: "../node_modules/@react-native-firebase/messaging"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
@@ -614,6 +653,8 @@ SPEC CHECKSUMS:
   Firebase: 580d09e8edafc3073ebf09c03fd42e4d80d35fe9
   FirebaseCore: 8138de860a90ca7eec5e324da5788fb0ebf1d93c
   FirebaseCoreDiagnostics: c2836d254a8f0bbb4121ff18f2c2ea39d118fd08
+  FirebaseInstallations: 60edbf7e11d91ae4c751d26c200dfd037099abe0
+  FirebaseMessaging: 23db8bf05585e929ada8af0f0968933c25252808
   Flipper: 30e8eeeed6abdc98edaf32af0cda2f198be4b733
   Flipper-Boost-iOSX: fd1e2b8cbef7e662a122412d7ac5f5bea715403c
   Flipper-DoubleConversion: 57ffbe81ef95306cc9e69c4aa3aeeeeb58a6a28c
@@ -662,6 +703,7 @@ SPEC CHECKSUMS:
   RNCPushNotificationIOS: 87b8d16d3ede4532745e05b03c42cff33a36cc45
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
   RNFBApp: 5bae3002117e55f3c9aa0fb38175dd16c8046c90
+  RNFBMessaging: ae6c40883868cd01fa802395174ec7d61cfa0920
   RNGestureHandler: e1ad51d31a580755079d5124d3ab66f0fcaa8311
   RNReanimated: e8afbe2a9e08e9e778ea72ddb1a8533445812621
   RNScreens: 522705f2e5c9d27efb17f24aceb2bf8335bc7b8e
