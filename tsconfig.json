@@ -10,7 +10,7 @@
 		"strict": true
 	},
 	"exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js", "jest.setup.js", ".eslintrc.js"],
-	"include": ["./custom.d.ts", "./src/assets/", "./src/", "App.tsx", "**/src/**/*.ts", "./*.ts", "**/test/**/*.ts"],
+	"include": ["./custom.d.ts", "./src/assets/", "./src/", "App.tsx", "**/src/**/*.ts", "./*.ts", "./*.js", "**/test/**/*.ts"],
 	"resolveJsonModule": true,
 	"typeRoots": ["./types"]
 }
