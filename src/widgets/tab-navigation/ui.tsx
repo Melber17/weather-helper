@@ -4,13 +4,14 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import styled from "styled-components/native";
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { verticalScale } from "react-native-size-matters";
+import { moderateScale, scale } from "react-native-size-matters";
 
 import { HomeStack } from "../../screens/home";
-import { HomeIcon, MapIcon, ExploreIcon, SettingsIcon } from "../../shared/ui";
+import { HomeIcon, MapIcon, ExploreIcon, SettingsIcon, AnimatedText } from "../../shared/ui";
 import SearchButton from "../../shared/assets/icons/search-button-icon.svg";
 import { getWidth } from "./lib";
 import { MapStack } from "../../screens/map";
+import { ACTIVE_COLOR, PASSIVE_COLOR } from "./constants";
 
 type TabStackType = {
 	Home: undefined;
@@ -35,9 +36,42 @@ export const TabNavigation = () => {
 	const insets = useSafeAreaInsets();
 
 	const isFocusedSharedValue = useSharedValue(20);
+	const isFocusedHomeSharedValue = useSharedValue(1);
+	const isFocusedExploreSharedValue = useSharedValue(0);
+	const isFocusedMapSharedValue = useSharedValue(0);
+	const isFocusedSettingsSharedValue = useSharedValue(0);
+	const activeIndex = useSharedValue(0);
 
+	const handleResetAllSharedValues = () => {
+		"worklet";
+		isFocusedHomeSharedValue.value = withSpring(0, config);
+		isFocusedExploreSharedValue.value = withSpring(0, config);
+		isFocusedMapSharedValue.value = withSpring(0, config);
+		isFocusedSettingsSharedValue.value = withSpring(0, config);
+	};
 	const handleTabListener = (index: number) => {
+		"worklet";
 		isFocusedSharedValue.value = withSpring((getWidth() * index) + 20, config);
+		if (activeIndex.value === index) {
+			return;
+		}
+		activeIndex.value = index;
+		handleResetAllSharedValues();
+		switch (index) {
+		case 0:
+			isFocusedHomeSharedValue.value = withSpring(1, config);
+			break;
+		case 1:
+			isFocusedExploreSharedValue.value = withSpring(1, config);
+			break;
+		case 3:
+			isFocusedMapSharedValue.value = withSpring(1, config);
+			break;
+		case 4:
+			isFocusedSettingsSharedValue.value = withSpring(1, config);
+			break;
+		}
+
 	};
 
 	const animatedStyles = useAnimatedStyle(() => ({
@@ -53,16 +87,24 @@ export const TabNavigation = () => {
 			<Tab.Navigator
 				initialRouteName="Home"
 				screenOptions={ {
-					tabBarStyle: { backgroundColor: "#0D0B26", height: verticalScale(56) },
+					tabBarStyle: { backgroundColor: "#0D0B26" },
 					headerShown: false,
+					tabBarLabelPosition: "below-icon"
 				} }
+
 			>
 				<Tab.Screen
 					name="Home"
 					component={ HomeStack }
 					options={ {
-						tabBarIcon: ({ focused }) => <HomeIcon focused={ focused } />,
-						tabBarLabel: ({ focused }) => <Label focused={ focused }>Home</Label>,
+						tabBarIcon: () => <HomeIcon isFocusedSharedValue={ isFocusedHomeSharedValue } />,
+						tabBarLabel: () =>
+							<AnimatedText
+								passiveColor={ PASSIVE_COLOR }
+								activeColor={ ACTIVE_COLOR }
+								isFocused={ isFocusedHomeSharedValue } >
+								Home
+							</AnimatedText>,
 					} }
 					listeners={ () => ({
 						tabPress: () => handleTabListener(0)
@@ -72,8 +114,14 @@ export const TabNavigation = () => {
 					name="Explore"
 					component={ ExploreScreen }
 					options={ {
-						tabBarIcon: ({ focused }) => <ExploreIcon focused={ focused } />,
-						tabBarLabel: ({ focused }) => <Label focused={ focused }>Explore</Label>,
+						tabBarIcon: () => <ExploreIcon isFocusedSharedValue={ isFocusedExploreSharedValue }/>,
+						tabBarLabel: () =>
+							<AnimatedText
+								passiveColor={ PASSIVE_COLOR }
+								activeColor={ ACTIVE_COLOR }
+								isFocused={ isFocusedExploreSharedValue }>
+								Explore
+							</AnimatedText>,
 					} }
 					listeners={ () => ({
 						tabPress: () => handleTabListener(1)
@@ -84,12 +132,12 @@ export const TabNavigation = () => {
 					component={ SearchScreen }
 					options={ {
 						tabBarIcon: () => (
-							<TouchableOpacity style={ { alignItems: "center", width: 79, backgroundColor: "transparent" } }>
+							<TouchableOpacity style={ { alignItems: "center", width: scale(79) } }>
 								<SearchButton />
 							</TouchableOpacity>
 						),
 
-						tabBarItemStyle: { width: 20, transform: [{ translateY: -24 }], backgroundColor: "transparent" },
+						tabBarItemStyle: { transform: [{ translateY: -20 }] },
 						tabBarLabel: () => null,
 					} }
 					listeners={ () => ({
@@ -100,8 +148,13 @@ export const TabNavigation = () => {
 					name="Map"
 					component={ MapStack }
 					options={ {
-						tabBarIcon: ({ focused }) => <MapIcon focused={ focused } />,
-						tabBarLabel: ({ focused }) => <Label focused={ focused }>Map</Label>,
+						tabBarIcon: () => <MapIcon isFocusedSharedValue={ isFocusedMapSharedValue }/>,
+						tabBarLabel: () => <AnimatedText
+							passiveColor={ PASSIVE_COLOR }
+							activeColor={ ACTIVE_COLOR }
+							isFocused={ isFocusedMapSharedValue }>
+							Map
+						</AnimatedText>,
 					} }
 					listeners={ () => ({
 						tabPress: () => handleTabListener(3)
@@ -111,8 +164,13 @@ export const TabNavigation = () => {
 					name="Settings"
 					component={ SettingsScreen }
 					options={ {
-						tabBarIcon: ({ focused }) => <SettingsIcon focused={ focused } />,
-						tabBarLabel: ({ focused }) => <Label focused={ focused }>Settings</Label>,
+						tabBarIcon: () => <SettingsIcon isFocusedSharedValue={ isFocusedSettingsSharedValue } />,
+						tabBarLabel: () => <AnimatedText
+							passiveColor={ PASSIVE_COLOR }
+							activeColor={ ACTIVE_COLOR }
+							isFocused={ isFocusedSettingsSharedValue }>
+							Settings
+						</AnimatedText>,
 					} }
 					listeners={ () => ({
 						tabPress: () => handleTabListener(4)
@@ -153,11 +211,10 @@ const Line = styled(Animated.View)<{width: number, isAndroid: boolean, bottomIns
 	background-color: #1DAEFF;
 	border-radius: 28px;
 	position: absolute;
-	bottom: ${({ isAndroid, bottomInset }) => isAndroid ? 50 : 50 + bottomInset}px;
+	bottom: ${({ isAndroid, bottomInset }) => isAndroid ? 50 : 45 + bottomInset}px;
 `;
 
-const Label = styled.Text<{ focused: boolean }>`
+const Label = styled(Animated.Text)`
 	font-weight: 600;
-	font-size: 10px;
-	color: ${({ focused }) => (focused ? "#B9C2CD" : "#7E848B")};
+	font-size: ${moderateScale(10)}px;
 `;
