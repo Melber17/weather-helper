@@ -14,11 +14,11 @@ export const App: React.FC = () => {
 	useEffect(() => {
 		SplashScreen.hide();
 	}, []);
-	useEffect(() => {
-		requestNotificationsPermission();
+	// useEffect(() => {
+	// 	requestNotificationsPermission();
 
-		getNotificationToken();
-	}, []);
+	// 	getNotificationToken();
+	// }, []);
 	LogBox.ignoreAllLogs();
 
 	return (
