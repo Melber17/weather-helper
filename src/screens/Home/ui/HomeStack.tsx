@@ -1,6 +1,6 @@
 
 import * as React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { HomeScreen } from "./HomeScreen";
 
@@ -8,11 +8,11 @@ export type HomeStackType = {
 	HomeScreen: undefined;
 }
 
-const Stack = createStackNavigator<HomeStackType>();
+const Stack = createNativeStackNavigator<HomeStackType>();
 
 export const HomeStack = () => (
 	<Stack.Navigator screenOptions={ {
-		headerShown: false
+		headerShown: false,
 	} }>
 		<Stack.Screen name="HomeScreen" component={ HomeScreen }/>
 	</Stack.Navigator>
